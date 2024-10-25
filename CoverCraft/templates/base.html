@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .head{
+            background-color: yellowgreen;
+            height: 65px;
+        }
+        .head_img{
+            display: inline;
+            padding:10px 20px;
+            font-size: x-large;
+        }
+        a{
+            text-decoration: none;
+            font-weight: bolder;
+            color: black;
+        }
+        .btn_nav{
+            display: inline;
+           
+            text-align: right;
+            
+            padding:10px 15px;
+            
+        }
+        button{
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 5px;                  /* Reduced space between buttons */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        .foot{
+            background-color: yellowgreen;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <Header>
+
+    
+        <div class="head">
+            <nav>
+                
+                <img src="images/logo.png" style="height: 45px; margin-left: 15px; display: inline;" alt="logo" >
+                <div class="head_img">
+                    <a style="margin-left: 10px; margin-right: 20px;" href="http://127.0.0.1:8000">Home</a>
+                    <a style="margin-right: 20px;" href="http://127.0.0.1:8000/cover">Cover</a>
+                    
+                    <a style="margin-right: 20px;" href="http://127.0.0.1:8000/about">About_US</a>
+                </div>
+                {% if user.is_authenticated %}
+                    <button style="margin-left: 800px;">
+                        <a href="http://127.0.0.1:8000/logout" style="text-decoration: none; color: white;">Logout</a>
+                    </button>
+                    <button>
+                        <a href="http://127.0.0.1:8000/vieworder" style="text-decoration: none; color: white;">Orders</a>
+                    </button>
+                    
+                {% else %}
+                    <div class="btn_nav">
+                        <button style="margin-left: 800px;">
+                            <a href="http://127.0.0.1:8000/login" style="text-decoration: none; color: white;">Login</a>
+                        </button>
+                        <button>
+                            <a href="http://127.0.0.1:8000/signup" style="text-decoration: none; color: white;">Signup</a>
+                        </button>
+                    </div>
+                {% endif %}
+            </nav>
+            
+        </div>
+    </Header>
+
+
+    {%block content %}
+
+    {% endblock %}
+
+    <footer>
+        <div style="background-color: yellowgreen; text-align: center; height: 40px; font-size: x-large;">
+            <a href="">Back to Top</a>
+        </div>
+        <div class="foot" style="display: flex; justify-content: center; align-items: top; ">
+            <table style="width: 1200px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                <th style="text-align: left;"><a href="">Get to Know Us</a></th>
+                <th style="text-align: center;"><a href="">Get to Know Us</a></th>
+                <th style="text-align: right;"><a href="">Get to Know Us</a></th>
+                <tr>
+                    <td>Contact Us</td>
+                    <td style="text-align: center;">Privacy Policy</td>
+                    <td style="text-align: right;">FAQs</td>
+                </tr>
+                <tr>
+                    <td><a href="http://127.0.0.1:8000/about">About Us</a></td>
+                    <td style="text-align: center;">Terms of Service</td>
+                    <td style="text-align: right;">Shipping Information</td>
+                </tr>
+                <tr>
+                    <td>+1 11111111111 <br> www.query@CoverCraft.com </td>
+                    <td style="text-align: center;">Return Policy</td>
+                    <td style="text-align: right;">60- Time Square New-York, USA </td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align: center; background-color: rgb(52, 78, 1); height: 30px;">
+            <strong>© 2024 CoverCraft. All rights reserved.</strong>
+        </div>
+
+    </footer>
+</body>
+</html>

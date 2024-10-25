@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: yellowgreen;
+        }
+        .return-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .return-button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Your Orders</h1>
+
+    <!-- Orders Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Phone Model</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>Payment Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through all orders -->
+            {% for order in order_details %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.phone }}</td>
+                <td>${{ order.price }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.postalcode }}</td>
+                <td>{{ order.paymenttype }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">You have no orders.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Return to Home Button -->
+    <div style="text-align: center;">
+        <a href="/" class="return-button">Return to Home</a>
+    </div>
+</body>
+</html>
